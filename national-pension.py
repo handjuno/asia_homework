@@ -75,9 +75,10 @@ class PensionData():
 def read_pensiondata():
     url = "https://github.com/handjuno/asia_homework/releases/download/v1.0/national-pension.csv"
     df = pd.read_csv(url, encoding="cp949")
-    return PensionData(df)
+    return df
 
-data = read_pensiondata()
+raw_df = read_pensiondata()
+data = PensionData(raw_df)
 company_name = st.text_input('회사명을 입력해 주세요', placeholder='검색할 회사명 입력')
 
 if data and company_name:
